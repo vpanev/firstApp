@@ -1,0 +1,16 @@
+<div class="container">
+   <div class="row">
+      <div class="card" *ngFor="let dataItem of list">
+         <p class="badge badge-secondary">{{dataItem.clothType}}</p>
+         <!-- <img class="card-img-top" src="/EcommerceUI/src/app/pictures/ck.jpg" alt="Card image cap"> -->
+         <p class="badge badge-secondary" id="price">{{dataItem.clothPrice}} BGN</p>
+         <div class="card-body">
+            <h5 class="card-title">{{dataItem.clothName}}</h5>
+            <p class="card-text">{{dataItem.clothBrand}} || Size - {{dataItem.clothSize}}</p>
+
+
+            <button class="btn btn-secondary">BUY</button>
+         </div>
+      </div>
+   </div>
+</div>
