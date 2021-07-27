@@ -8,8 +8,7 @@
             <h5 class="card-title">{{dataItem.clothName}}</h5>
             <p class="card-text">{{dataItem.clothBrand}} || Size - {{dataItem.clothSize}}</p>
 
-
-            <button class="btn btn-secondary">BUY</button>
+            <button class="btn btn-secondary" (click)="addItemToCart(dataItem.clothId)">BUY</button>
          </div>
       </div>
    </div>

@@ -38,7 +38,6 @@ namespace EcommerceApp
             services.AddDbContext<ClothAppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
             services.AddCors();
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ClothAppDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

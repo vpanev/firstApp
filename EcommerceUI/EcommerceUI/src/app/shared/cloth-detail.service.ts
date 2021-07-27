@@ -1,3 +1,5 @@
+import { CartComponent } from './../cloth-detail/cart/cart.component';
+import { ClothDetailComponent } from './../cloth-detail/cloth-detail.component';
 import { ClothDetail } from './cloth-detail.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
@@ -11,7 +13,6 @@ export class ClothDetailService {
   constructor(private http: HttpClient) { }
   readonly baseUrl = "https://localhost:44315/api/Clothes";
   formData: ClothDetail = new ClothDetail();
-
 
 
 

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddEditClothComponent } from './cloth-detail/add-edit-cloth/add-edit-cloth.component';
 import { map } from 'rxjs/operators';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CartComponent } from './cloth-detail/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ClothDetailComponent,
     ClothDetailFormComponent,
     AddEditClothComponent,
-    SignUpComponent
+    SignUpComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
