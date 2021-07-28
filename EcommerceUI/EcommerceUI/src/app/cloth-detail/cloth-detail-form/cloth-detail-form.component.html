@@ -1,6 +1,7 @@
 <div class="container">
+   <filter-textbox (changed)="filter($event)"></filter-textbox>
    <div class="row">
-      <div class="card" *ngFor="let dataItem of list">
+      <div class="card" *ngFor="let dataItem of filteredClothes">
          <p class="badge badge-secondary">{{dataItem.clothType}}</p>
          <!-- <img class="card-img-top" src="/EcommerceUI/src/app/pictures/ck.jpg" alt="Card image cap"> -->
          <p class="badge badge-secondary" id="price">{{dataItem.clothPrice}} BGN</p>
@@ -12,4 +13,8 @@
          </div>
       </div>
    </div>
+   <p *ngIf="!filteredClothes || !filteredClothes.length" style="text-align: center; font-size: 20px;">No products found
+      with this
+      filter applied
+   </p>
 </div>

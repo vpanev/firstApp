@@ -7,8 +7,8 @@ import { ClothDetail } from './cloth-detail.model';
 })
 export class CartService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {
+  }
   readonly baseUrl = "https://localhost:44315/api/Clothes";
   cart: ClothDetail[] = [];
   getClothById(id: number) {
@@ -30,10 +30,5 @@ export class CartService {
         this.cart.splice(index, 1);
       }
     })
-    // this.cart.find(node => {
-    //   return node.clothId == item.clothId;
-    // })
-
-    // this.cart.splice(item.clothId, 1);
   }
 }

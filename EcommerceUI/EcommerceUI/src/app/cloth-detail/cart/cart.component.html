@@ -1,4 +1,6 @@
 <div class="container">
+   <button style="margin-left: 85%; 
+   background-color: red;" class="btn btn-secondary" id="clear" (click)="clearCart()">CLEAR CART</button>
    <div class="row">
       <h1 style="margin-left: 25%;" *ngIf="items.length<=0">Your Cart Is Empty</h1>
       <div class="card" *ngFor="let dataItem of items">

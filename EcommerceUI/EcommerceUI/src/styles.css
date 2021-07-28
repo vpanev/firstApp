@@ -35,7 +35,7 @@ html, body {
    background-color: rgb(224, 188, 188);
    width: 15%;
    margin-left: 5%;
-   height: 50%;
+   height: 100%;
    margin-top: 5%;
    border-radius: 4px;
    z-index: 8000;
@@ -45,7 +45,7 @@ html, body {
 .visualize-items{
    background-color: red;
    margin-left: 21%;
-   margin-top: -23.8%;
+   margin-top: -47.5%;
    width: 74%;
    background-color: rgb(224, 188, 188);
    overflow: hidden;
@@ -150,3 +150,20 @@ button.btn-submit{
     border-bottom-color : #e91e63 !important;
     box-shadow: 0 1px 0 0 #e91e63 !important;
 }  */
+
+.left-side-nav ul{
+   width: 100%;
+   margin:10% 0% 0% 0%;
+   height: 600px;
+   overflow: hidden;
+}
+
+.left-side-nav li{
+   margin: 0% 0% 0% 5%;
+   border:1px #009688  solid;
+   color: #009688;
+   text-transform: uppercase;
+   text-align: center;
+   height: 30%;
+   width: 90%;
+}

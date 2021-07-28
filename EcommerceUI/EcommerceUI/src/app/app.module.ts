@@ -14,6 +14,9 @@ import { AddEditClothComponent } from './cloth-detail/add-edit-cloth/add-edit-cl
 import { map } from 'rxjs/operators';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CartComponent } from './cloth-detail/cart/cart.component';
+import { FilterTextboxComponent } from './shared/filter-textbox.component';
+import { PriceComponent } from './sorting/price/price.component';
+import { BrandComponent } from './sorting/brand/brand.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,11 @@ import { CartComponent } from './cloth-detail/cart/cart.component';
     ClothDetailFormComponent,
     AddEditClothComponent,
     SignUpComponent,
-    CartComponent
+    CartComponent,
+    FilterTextboxComponent,
+    PriceComponent,
+    BrandComponent
+
   ],
   imports: [
     BrowserModule,

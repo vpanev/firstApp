@@ -27,6 +27,7 @@ export class ClothDetailFormComponent implements OnInit {
   refreshList() {
     this.service.refreshList().subscribe(data => {
       this.list = data;
+      this.filteredClothes = this.list;
     });
   }
 
@@ -37,6 +38,21 @@ export class ClothDetailFormComponent implements OnInit {
       this.cartService.addToCart(this.item);
       console.log(this.cartService.loadCart())
     })
+  }
+
+  filteredClothes: any[] = [];
+  filter(data: string) {
+    if (data) {
+      this.filteredClothes = this.list.filter((cloth: ClothDetail) => {
+        return cloth.clothName.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+          cloth.clothBrand.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+          cloth.clothPrice.toString().indexOf(data.toLowerCase()) > -1 ||
+          cloth.clothSize.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+          cloth.clothType.toLowerCase().indexOf(data.toLowerCase()) > -1;
+      });
+    } else {
+      this.filteredClothes = this.list;
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { ClothDetailComponent } from './../cloth-detail.component';
 import { ClothDetailService } from './../../shared/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
 import { ClothDetail } from 'src/app/shared/cloth-detail.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -17,9 +18,11 @@ export class CartComponent implements OnInit {
     private toastr: ToastrService) { }
 
   items = this.cartService.loadCart();
+
   ngOnInit(): void {
     this.loadCart()
   }
+
   // cloth1: ClothDetail = {
   //   clothId: 0,
   //   clothName: 'ASDASDASD',
@@ -45,6 +48,8 @@ export class CartComponent implements OnInit {
   }
   clearCart() {
     this.cartService.clearCart();
+
+    this.toastr.success(`Cleared`)
     this.loadCart();
   }
   removeItem(item) {
