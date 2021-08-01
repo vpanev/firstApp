@@ -10,10 +10,13 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using EcommerceApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace EcommerceApp
 {
@@ -35,10 +38,50 @@ namespace EcommerceApp
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EcommerceApp", Version = "v1" });
             });
+
             services.AddDbContext<ClothAppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+
+            services.AddIdentity<User,IdentityRole>(options =>
+            {
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                })
                 .AddEntityFrameworkStores<ClothAppDbContext>();
+
+
+            var applicationSettingsConfiguration = Configuration.GetSection("ApplicationSettings");
+            services.Configure<AppSettings>(applicationSettingsConfiguration);
+
+            var appSettings = applicationSettingsConfiguration.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            services
+                .AddAuthentication(x =>
+                {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+                })
+                .AddJwtBearer(x =>
+                {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+                });
+
+
+
+
             services.AddCors();
         }
 

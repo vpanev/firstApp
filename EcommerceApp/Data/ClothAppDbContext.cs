@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceApp.Models
 {
-    public class ClothAppDbContext : IdentityDbContext<ApplicationUser>
+    public class ClothAppDbContext : IdentityDbContext<User>
     {
         public ClothAppDbContext(DbContextOptions<ClothAppDbContext> options):base(options)
         {

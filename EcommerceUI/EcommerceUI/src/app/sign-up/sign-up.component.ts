@@ -1,4 +1,4 @@
-import { NgForm } from '@angular/forms';
+import { AbstractControl, NgForm } from '@angular/forms';
 import { User } from './../shared/user.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -23,11 +23,11 @@ export class SignUpComponent implements OnInit {
     this.user = {
       UserName: '',
       Password: '',
-      Email: '',
-      FirstName: '',
-      LastName: ''
+      Email: ''
+      // FirstName: '',
+      // LastName: ''
     };
-
   }
+
 
 }

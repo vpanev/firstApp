@@ -144,3 +144,4 @@ C:\Users\ValeriPC\Desktop\learning html css js\ecommerce\EcommerceApp\EcommerceA
 C:\Users\ValeriPC\Desktop\learning html css js\ecommerce\EcommerceApp\EcommerceApp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
 C:\Users\ValeriPC\Desktop\learning html css js\ecommerce\EcommerceApp\EcommerceApp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\ValeriPC\Desktop\learning html css js\ecommerce\EcommerceApp\EcommerceApp\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\ValeriPC\Desktop\learning html css js\ecommerce\EcommerceApp\EcommerceApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

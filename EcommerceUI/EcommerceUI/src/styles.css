@@ -64,11 +64,11 @@ html, body {
    margin-bottom: 20px;
    
    position: relative;
-   cursor: pointer;
 }
 .card p{
    font-size: 10px;
    padding-bottom: 0;
+   cursor: pointer;
 }
 .card button{
    font-size: 15px;
@@ -174,4 +174,12 @@ button.btn-submit{
    text-align: center;
    height: auto;
    width: 95%;
+}
+.updateBox{
+   background-color: red;
+   
+   height: 70%;
+   
+   margin: 5% -50% 0% 0%;
+   opacity: 0;
 }
