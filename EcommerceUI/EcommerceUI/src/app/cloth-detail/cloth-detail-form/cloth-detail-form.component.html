@@ -1,7 +1,7 @@
 <div class="container">
    <filter-textbox (changed)="filter($event)"></filter-textbox>
    <div class="row">
-      <div class="card" *ngFor="let dataItem of filteredClothes">
+      <div class="card" *ngFor="let dataItem of filteredClothes" (click)="redirectToEdit(dataItem.clothId,dataItem)">
          <p class="badge badge-secondary">{{dataItem.clothType}}</p>
          <!-- <img class="card-img-top" src="/EcommerceUI/src/app/pictures/ck.jpg" alt="Card image cap"> -->
          <p class="badge badge-secondary" id="price">{{dataItem.clothPrice}} BGN</p>
@@ -10,6 +10,8 @@
             <p class="card-text">{{dataItem.clothBrand}} || Size - {{dataItem.clothSize}}</p>
 
             <button class="btn btn-secondary" (click)="addItemToCart(dataItem.clothId)">BUY</button>
+            <button class="btn btn-secondary" (click)="deleteCloth(dataItem.clothId,dataItem.clothName)"
+               id="delete">Delete</button>
          </div>
       </div>
    </div>

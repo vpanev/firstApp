@@ -25,4 +25,8 @@ export class ClothDetailService {
   putClothDetail() {
     return this.http.put(`${this.baseUrl}/${this.formData.clothId}`, this.formData);
   }
+  deleteClothDetail(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
 }

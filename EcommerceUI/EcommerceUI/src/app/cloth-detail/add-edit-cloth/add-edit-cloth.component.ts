@@ -17,7 +17,6 @@ export class AddEditClothComponent implements OnInit {
 
   PhotoFileName: string;
   PhotoFilePath: string;
-
   ngOnInit(): void {
   }
   onSubmit(form: NgForm) {
@@ -26,6 +25,11 @@ export class AddEditClothComponent implements OnInit {
     } else {
       this.updateRecord(form);
     }
+  }
+
+
+  populateForm(selectedRecord: ClothDetail) {
+    this.service.formData = selectedRecord;
   }
 
   insertRecord(form: NgForm) {

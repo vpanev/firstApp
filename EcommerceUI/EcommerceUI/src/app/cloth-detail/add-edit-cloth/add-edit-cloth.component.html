@@ -1,5 +1,5 @@
 <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)" class="col s12">
-   <input type="hidden" name="paymentDetailId" />
+   <input type="hidden" name="addEditCloth" [value]="service.formData.clothId" />
    <div class="form-group">
       <label style="padding-left:10px">Cloth Name</label>
       <input class="form-control form-control-lg" placeholder="Cloth Name" name="clothName" #clothName="ngModel"
@@ -32,6 +32,10 @@
 
    <div class="form-group">
       <button class="btn  btn-secondary btn-lg btn-block my-6" type="submit"
-         style="width: 66%; margin-top: -5px; margin-left: 5px;">SUBMIT</button>
+         style="width: 66%; margin-top: -5px; margin-left: 5px;" *ngIf="this.service.formData.clothId == 0">Add
+         Cloth</button>
+      <button class="btn  btn-secondary btn-lg btn-block my-6" type="submit"
+         style="width: 66%; margin-top: -5px; margin-left: 5px;" *ngIf="this.service.formData.clothId != 0">Update
+         Cloth</button>
    </div>
 </form>

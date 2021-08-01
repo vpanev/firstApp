@@ -8,6 +8,7 @@ html, body {
    width: 100%;
 }
 
+
 .nav{
    background-color:rgb(224, 188, 188);
    border-radius: 4px;
@@ -63,6 +64,7 @@ html, body {
    margin-bottom: 20px;
    
    position: relative;
+   cursor: pointer;
 }
 .card p{
    font-size: 10px;
@@ -70,10 +72,17 @@ html, body {
 }
 .card button{
    font-size: 15px;
-   width: 130px;
-   margin-left: -63px;
+   width: 100px;
+   margin-left: -45%;
    text-align: center;
    position: absolute;
+}
+#delete{
+   margin-left: 3%;
+   background-color: rgb(184, 30, 30);
+}
+#delete:hover{
+   background-color: red;
 }
 
 .badge.badge-secondary{
@@ -128,11 +137,10 @@ button.btn-submit{
    background-color: rgb(224, 188, 188);
    width: 18%;
    margin-left: 1.5%;
-   height: 51%;
+   height: auto;
    margin-top: 4%;
    border-radius: 4px;
    z-index: 8000;
-   overflow: hidden;
 }
 
 .visualize-items{
@@ -154,16 +162,16 @@ button.btn-submit{
 .left-side-nav ul{
    width: 100%;
    margin:10% 0% 0% 0%;
-   height: 600px;
+   height: 100%;
    overflow: hidden;
 }
 
 .left-side-nav li{
-   margin: 0% 0% 0% 5%;
+   margin: 0% 0% 10% 5%;
    border:1px #009688  solid;
    color: #009688;
    text-transform: uppercase;
    text-align: center;
-   height: 30%;
-   width: 90%;
+   height: auto;
+   width: 95%;
 }

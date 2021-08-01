@@ -37,6 +37,8 @@ namespace EcommerceApp
             });
             services.AddDbContext<ClothAppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ClothAppDbContext>();
             services.AddCors();
         }
 
@@ -54,7 +56,7 @@ namespace EcommerceApp
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

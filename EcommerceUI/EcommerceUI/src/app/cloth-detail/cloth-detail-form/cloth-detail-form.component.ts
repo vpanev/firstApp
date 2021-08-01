@@ -1,10 +1,12 @@
+import { ClothDetail } from 'src/app/shared/cloth-detail.model';
+import { AddEditClothComponent } from './../add-edit-cloth/add-edit-cloth.component';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from './../../shared/cart.service';
 
 import { ClothDetailComponent } from './../cloth-detail.component';
-import { ClothDetail } from './../../shared/cloth-detail.model';
 import { ClothDetailService } from './../../shared/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,8 +17,9 @@ import { Component, OnInit } from '@angular/core';
 export class ClothDetailFormComponent implements OnInit {
 
   constructor(public service: ClothDetailService, public cartService: CartService,
-    public toastr: ToastrService) { }
+    public toastr: ToastrService, private router: Router) { }
 
+  private addEdit: AddEditClothComponent;
 
   ngOnInit(): void {
     this.refreshList();
@@ -40,6 +43,22 @@ export class ClothDetailFormComponent implements OnInit {
     })
   }
 
+  deleteCloth(id: number, name: string) {
+    if (confirm("Are you sure you want to delete " + name + " ?")) {
+      this.service.deleteClothDetail(id).subscribe(res => {
+        this.refreshList();
+        this.toastr.success("Item Deleted!")
+      })
+    } else {
+      this.toastr.warning("Failed Deleting!")
+    }
+  }
+  redirectToEdit(itemId: number, item: ClothDetail) {
+
+    this.router.navigate([`./add`])
+    this.service.formData = item;
+  }
+
   filteredClothes: any[] = [];
   filter(data: string) {
     if (data) {
@@ -54,5 +73,6 @@ export class ClothDetailFormComponent implements OnInit {
       this.filteredClothes = this.list;
     }
   }
+
 
 }

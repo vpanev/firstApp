@@ -1,3 +1,4 @@
+import { ClothDetailService } from './../../shared/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PriceComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: ClothDetailService) { }
 
   ngOnInit(): void {
   }
-
 }
