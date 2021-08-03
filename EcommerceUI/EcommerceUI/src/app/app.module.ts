@@ -1,4 +1,8 @@
-import { AuthService } from './shared/services/auth.service';
+import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthenticationService } from './shared/services/authentication.service';
+import { ClothDetailService } from './shared/services/cloth-detail.service';
+import { CartService } from './shared/services/cart.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,15 +14,12 @@ import { AppComponent } from './app.component';
 import { ClothDetailComponent } from './cloth-detail/cloth-detail.component';
 import { ClothDetailFormComponent } from './cloth-detail/cloth-detail-form/cloth-detail-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { AddEditClothComponent } from './cloth-detail/add-edit-cloth/add-edit-cloth.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { CartComponent } from './cloth-detail/cart/cart.component';
 import { FilterTextboxComponent } from './shared/filter-textbox.component';
 import { PriceComponent } from './sorting/price/price.component';
 import { BrandComponent } from './sorting/brand/brand.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,10 @@ import { RegisterComponent } from './register/register.component';
     ClothDetailComponent,
     ClothDetailFormComponent,
     AddEditClothComponent,
-    SignUpComponent,
     CartComponent,
     FilterTextboxComponent,
     PriceComponent,
-    BrandComponent,
-    LoginComponent,
-    RegisterComponent
+    BrandComponent
 
   ],
   imports: [
@@ -42,9 +40,14 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AuthenticationModule
   ],
-  providers: [AuthService],
+  providers: [CartService, ClothDetailService, AuthenticationService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorHandlerService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

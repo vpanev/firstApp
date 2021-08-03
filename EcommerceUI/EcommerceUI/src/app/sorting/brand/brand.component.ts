@@ -1,5 +1,5 @@
+import { ClothDetailService } from './../../shared/services/cloth-detail.service';
 import { ClothDetail } from 'src/app/shared/cloth-detail.model';
-import { ClothDetailService } from './../../shared/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

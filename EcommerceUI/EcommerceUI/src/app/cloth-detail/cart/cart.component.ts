@@ -1,11 +1,7 @@
+import { CartService } from './../../shared/services/cart.service';
+import { ClothDetailService } from './../../shared/services/cloth-detail.service';
 import { ToastrService } from 'ngx-toastr';
-import { CartService } from './../../shared/cart.service';
-import { ClothDetailFormComponent } from './../cloth-detail-form/cloth-detail-form.component';
-import { ClothDetailComponent } from './../cloth-detail.component';
-import { ClothDetailService } from './../../shared/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
-import { ClothDetail } from 'src/app/shared/cloth-detail.model';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-cart',

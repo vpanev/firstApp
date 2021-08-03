@@ -1,5 +1,6 @@
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+
+import { RegisterUserComponent } from './authentication/register-user/register-user.component';
+
 import { CartComponent } from './cloth-detail/cart/cart.component';
 
 
@@ -8,14 +9,14 @@ import { AddEditClothComponent } from './cloth-detail/add-edit-cloth/add-edit-cl
 import { ClothDetailComponent } from './cloth-detail/cloth-detail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: "clothes", component: ClothDetailComponent },
   { path: "add", component: AddEditClothComponent },
-  { path: "signup", component: RegisterComponent },
-  { path: "login", component: LoginComponent },
-  { path: "cart", component: LoginComponent }
+  { path: "signup", component: RegisterUserComponent },
+  { path: "login", component: CartComponent },
+  { path: "cart", component: CartComponent },
+  // { path: 'signup', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
 ];
 
 @NgModule({

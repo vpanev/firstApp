@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EcommerceApp.Models
 {
@@ -34,5 +31,6 @@ namespace EcommerceApp.Models
         [Column(TypeName = "decimal(5,1)")]
         [Required]
         public decimal ClothPrice { get; set; }
+        
     }
 }

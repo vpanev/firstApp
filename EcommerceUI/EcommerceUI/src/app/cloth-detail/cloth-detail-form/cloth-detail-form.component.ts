@@ -1,10 +1,10 @@
+import { CartService } from './../../shared/services/cart.service';
+import { ClothDetailService } from './../../shared/services/cloth-detail.service';
 import { ClothDetail } from 'src/app/shared/cloth-detail.model';
 import { AddEditClothComponent } from './../add-edit-cloth/add-edit-cloth.component';
 import { ToastrService } from 'ngx-toastr';
-import { CartService } from './../../shared/cart.service';
 
 import { ClothDetailComponent } from './../cloth-detail.component';
-import { ClothDetailService } from './../../shared/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

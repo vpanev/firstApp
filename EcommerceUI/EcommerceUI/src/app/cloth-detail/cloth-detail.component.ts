@@ -1,4 +1,4 @@
-import { ClothDetailService } from './../shared/cloth-detail.service';
+import { ClothDetailService } from './../shared/services/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

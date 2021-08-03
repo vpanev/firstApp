@@ -1,13 +1,12 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using EcommerceApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EcommerceApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 
 namespace EcommerceApp.Controllers
@@ -81,6 +80,7 @@ namespace EcommerceApp.Controllers
         // POST: api/Clothes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Cloth>> PostCloth(Cloth cloth)
         {
             _context.Clothes.Add(cloth);
@@ -91,6 +91,7 @@ namespace EcommerceApp.Controllers
 
         // DELETE: api/Clothes/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteCloth(int id)
         {
             var cloth = await _context.Clothes.FindAsync(id);
