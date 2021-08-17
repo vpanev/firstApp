@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../shared/services/authentication.service';
 import { CartService } from './../../shared/services/cart.service';
 import { ClothDetailService } from './../../shared/services/cloth-detail.service';
 import { ClothDetail } from 'src/app/shared/cloth-detail.model';
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 export class ClothDetailFormComponent implements OnInit {
 
   constructor(public service: ClothDetailService, public cartService: CartService,
-    public toastr: ToastrService, private router: Router) { }
+    public toastr: ToastrService, private router: Router, private authService: AuthenticationService) { }
 
   private addEdit: AddEditClothComponent;
 
@@ -74,5 +75,8 @@ export class ClothDetailFormComponent implements OnInit {
     }
   }
 
+  isUserAuthenticated() {
+    return this.authService.isUserAuthenticated();
+  }
 
 }

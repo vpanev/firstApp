@@ -1,0 +1,47 @@
+.card-body{
+   /* border: 1px solid black; */
+   align-items: center;
+   align-content: center;
+}
+.card-body h1{
+   padding-left: 42%;
+   padding-bottom: 10px;
+   color: #009688 ;
+}
+.card-body form{
+   padding-left: 25%;
+   height: 300px;
+   border: 4px solid #009688 ;
+   border-radius: 10px;
+}
+.card-body p{
+   padding-left: 37%;
+}
+.card-body a{
+   text-decoration: none;
+   color: #009688;
+   font-weight: 500;
+}
+.card-body a:hover{
+   color: rgb(247, 129, 174);
+}
+.card-body label{
+   color: black;
+   padding-left: -100px;
+}
+.form-group.row{
+   padding-top: 8%;
+   margin-bottom: -5%;
+}
+button{
+   width: 400px;
+}
+
+.ng-invalid.ng-touched{
+    border-color: red;
+}
+em{
+    color: #e71515;
+    font-weight: bold;
+    font-size: 13px;
+}

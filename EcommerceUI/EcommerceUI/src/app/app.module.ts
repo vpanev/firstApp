@@ -20,7 +20,13 @@ import { FilterTextboxComponent } from './shared/filter-textbox.component';
 import { PriceComponent } from './sorting/price/price.component';
 import { BrandComponent } from './sorting/brand/brand.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +36,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     CartComponent,
     FilterTextboxComponent,
     PriceComponent,
-    BrandComponent
+    BrandComponent,
+    PrivacyComponent,
+    ForbiddenComponent
 
   ],
   imports: [
@@ -41,7 +49,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AuthenticationModule
+    AuthenticationModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['https://localhost:44315'],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [CartService, ClothDetailService, AuthenticationService, {
     provide: HTTP_INTERCEPTORS,

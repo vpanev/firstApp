@@ -149,6 +149,20 @@ namespace EcommerceApp.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "686557db-5129-423a-b372-980898229a59",
+                            ConcurrencyStamp = "fd137085-ef9b-432b-872b-93abaff948ca",
+                            Name = "Client"
+                        },
+                        new
+                        {
+                            Id = "a4d54740-e22e-4822-a527-c8548b1da36c",
+                            ConcurrencyStamp = "5ce461c3-f8ac-4be4-8e87-abfcab2cff96",
+                            Name = "Administrator"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

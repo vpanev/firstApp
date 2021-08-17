@@ -11,9 +11,12 @@
             <h5 class="card-title">{{dataItem.clothName}}</h5>
             <p class="card-text">{{dataItem.clothBrand}} || Size - {{dataItem.clothSize}}</p>
 
-            <button class="btn btn-secondary" (click)="addItemToCart(dataItem.clothId)">BUY</button>
-            <button class="btn btn-secondary" (click)="deleteCloth(dataItem.clothId,dataItem.clothName)"
-               id="delete">Delete</button>
+            <button *ngIf="isUserAuthenticated()" class="btn btn-secondary"
+               (click)="addItemToCart(dataItem.clothId)">BUY</button>
+            <button *ngIf="!isUserAuthenticated()" class="btn btn-secondary" routerLink="/login"
+               style="width: 90%;">Login To Buy</button>
+            <button *ngIf="isUserAuthenticated()" class="btn btn-secondary"
+               (click)="deleteCloth(dataItem.clothId,dataItem.clothName)" id="delete">Delete</button>
          </div>
       </div>
    </div>

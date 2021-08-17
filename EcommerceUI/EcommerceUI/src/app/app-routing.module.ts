@@ -1,3 +1,9 @@
+import { AuthGuard } from './shared/guards/auth.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+
+import { LoginComponent } from './authentication/login/login.component';
 
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
 
@@ -11,11 +17,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: "clothes", component: ClothDetailComponent },
-  { path: "add", component: AddEditClothComponent },
+  { path: "clothes", component: ClothDetailComponent, },
+  { path: "add", component: AddEditClothComponent, },
   { path: "signup", component: RegisterUserComponent },
-  { path: "login", component: CartComponent },
+  { path: "login", component: LoginComponent },
   { path: "cart", component: CartComponent },
+  { path: "privacy", component: PrivacyComponent },
+  { path: "forbidden", component: ForbiddenComponent },
   // { path: 'signup', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
 ];
 

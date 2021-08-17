@@ -12,8 +12,7 @@ namespace EcommerceApp
         public MappingProfile()
         {
             CreateMap<UserForRegistrationDto, User>()
-                .ForMember(u => u.UserName,
-                    opt => opt.MapFrom(x => x.Email));
+                .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
         }
     }
 }
