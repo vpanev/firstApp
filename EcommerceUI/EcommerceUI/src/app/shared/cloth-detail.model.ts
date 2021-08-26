@@ -6,5 +6,5 @@ export class ClothDetail {
    clothType: string = '';
    photoFileName: string = '';
    clothPrice: number = 0;
-
+   quantity: number = 1;
 }

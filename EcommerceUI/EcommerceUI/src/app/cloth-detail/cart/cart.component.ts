@@ -1,3 +1,4 @@
+import { ClothDetail } from './../../shared/cloth-detail.model';
 import { CartService } from './../../shared/services/cart.service';
 import { ClothDetailService } from './../../shared/services/cloth-detail.service';
 import { ToastrService } from 'ngx-toastr';
@@ -13,34 +14,13 @@ export class CartComponent implements OnInit {
   constructor(public service: ClothDetailService, public cartService: CartService,
     private toastr: ToastrService) { }
 
-  items = this.cartService.loadCart();
-
+  items: ClothDetail[] = []
+  totalSum: number = 0
   ngOnInit(): void {
     this.loadCart()
   }
-
-  // cloth1: ClothDetail = {
-  //   clothId: 0,
-  //   clothName: 'ASDASDASD',
-  //   clothBrand: 'ASDASDASD',
-  //   clothSize: 'XS',
-  //   clothType: 'JEANSSSSS',
-  //   photoFileName: '',
-  //   clothPrice: 55
-  // }
-  // cloth2: ClothDetail = {
-  //   clothId: 0,
-  //   clothName: 'ASDASDASD',
-  //   clothBrand: 'ASDASDASD',
-  //   clothSize: 'XS',
-  //   clothType: 'JEANSSSSS',
-  //   photoFileName: '',
-  //   clothPrice: 55
-  // }
   loadCart() {
     this.items = this.cartService.loadCart();
-    // this.items.push(this.cloth1);
-    // this.items.push(this.cloth2);
   }
   clearCart() {
     this.cartService.clearCart();
@@ -51,6 +31,20 @@ export class CartComponent implements OnInit {
   removeItem(item) {
     this.cartService.removeItem(item);
     this.toastr.success(`Product ${item.clothName} removed from your cart!`)
+    this.loadCart();
+  }
+  addQty(item) {
+    this.cartService.addQuantity(item);
+    this.loadCart();
+
+  }
+  removeQty(item) {
+    this.cartService.removeQuantity(item)
+    this.loadCart();
+
+  }
+  getTotalSum() {
+    return this.cartService.getTotalSum()
   }
 
 

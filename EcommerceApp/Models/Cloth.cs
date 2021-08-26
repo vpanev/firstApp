@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,6 +32,10 @@ namespace EcommerceApp.Models
         [Column(TypeName = "decimal(5,1)")]
         [Required]
         public decimal ClothPrice { get; set; }
+
+        [Column(TypeName = "int")]
+        [DefaultValue(1)]
+        public int Quantity { get; set; }
         
     }
 }

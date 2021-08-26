@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(ClothAppDbContext))]
-    [Migration("20210825152856_renamingClothPictureProperty")]
-    partial class renamingClothPictureProperty
+    [Migration("20210826094614_Quantity")]
+    partial class Quantity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,6 +123,9 @@ namespace EcommerceApp.Migrations
                     b.Property<string>("ClothType")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("ClothId");
 

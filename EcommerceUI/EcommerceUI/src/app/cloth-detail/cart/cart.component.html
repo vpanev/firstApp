@@ -11,10 +11,19 @@
             <p class="card-text">{{dataItem.clothType}}</p>
             <p class="card-text">{{dataItem.clothBrand}}</p>
             <p class="card-text">{{dataItem.clothSize}}</p>
-            <p class="card-text">{{dataItem.clothPrice}} BGN</p>
+            <p class="card-text">{{dataItem.clothPrice}} BGN per item</p>
 
-            <button class="btn btn-secondary">BUY</button>
+
             <button class="btn btn-secondary" id="remove" (click)="removeItem(dataItem)">Remove</button>
+            <div class="quantity">
+               <h6>Quantity</h6>
+               <br>
+               <p>
+                  <i class="material-icons" id="plus" (click)="addQty(dataItem)">add </i>
+                  <span class="quant-box"> {{dataItem.quantity}} </span>
+                  <i class="material-icons" id="minus" (click)="removeQty(dataItem)">remove </i>
+               </p>
+            </div>
          </div>
          <div class="static">
             <h5>Type : </h5>
@@ -23,5 +32,9 @@
             <h5>Price : </h5>
          </div>
       </div>
+   </div>
+   <div class="total">
+      <h5>Total: {{getTotalSum()}}<button class="btn btn-secondary">BUY</button></h5>
+
    </div>
 </div>
