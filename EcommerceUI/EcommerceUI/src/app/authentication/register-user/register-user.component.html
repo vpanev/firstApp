@@ -21,6 +21,15 @@
             </div>
          </div>
          <div class="form-group row">
+            <label for="username" class="col-form-label col-sm-2">Username:</label>
+            <div class="col-md-5">
+               <input type="text" id="username" formControlName="username" class="form-control" />
+            </div>
+            <div class="col-md-5">
+               <em *ngIf="validateControl('username') && hasError('username', 'required')">Username is required</em>
+            </div>
+         </div>
+         <div class="form-group row">
             <label for="email" class="col-form-label col-sm-2">Email:</label>
             <div class="col-md-5">
                <input type="email" id="email" formControlName="email" class="form-control" />

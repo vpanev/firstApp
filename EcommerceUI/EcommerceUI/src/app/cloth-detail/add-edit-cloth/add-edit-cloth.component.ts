@@ -1,4 +1,3 @@
-
 import { ClothDetailService } from './../../shared/services/cloth-detail.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -45,7 +44,6 @@ export class AddEditClothComponent implements OnInit {
   }
 
   updateRecord(form: NgForm) {
-
     this.service.putClothDetail().subscribe(res => {
       this.resetForm(form);
 

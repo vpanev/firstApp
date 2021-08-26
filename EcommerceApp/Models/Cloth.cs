@@ -26,7 +26,7 @@ namespace EcommerceApp.Models
         public string ClothType { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        public string PhotoFileName { get; set; }
+        public string ClothPicture { get; set; }
 
         [Column(TypeName = "decimal(5,1)")]
         [Required]

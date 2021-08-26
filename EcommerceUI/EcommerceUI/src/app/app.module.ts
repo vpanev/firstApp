@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './shared/interceptors/authInterceptor';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthenticationService } from './shared/services/authentication.service';
@@ -21,12 +22,12 @@ import { PriceComponent } from './sorting/price/price.component';
 import { BrandComponent } from './sorting/brand/brand.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { PrivacyComponent } from './privacy/privacy.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,6 @@ export function tokenGetter() {
     FilterTextboxComponent,
     PriceComponent,
     BrandComponent,
-    PrivacyComponent,
     ForbiddenComponent
 
   ],
@@ -53,16 +53,22 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['https://localhost:44315'],
+        allowedDomains: ["localhost:44315"],
         disallowedRoutes: []
       }
     })
   ],
-  providers: [CartService, ClothDetailService, AuthenticationService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: ErrorHandlerService,
-    multi: true
-  }],
+  providers: [CartService, ClothDetailService, AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

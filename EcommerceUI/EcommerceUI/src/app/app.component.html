@@ -7,9 +7,10 @@
       <li class="nav-item">
         <button type="button" class="btn btn-secondary btn-lg" routerLink="clothes">Clothes</button>
       </li>
-      <li *ngIf="isUserAuthenticated" class="nav-item">
+      <li *ngIf="isUserAdmin()" class="nav-item">
         <button type="button" class="btn btn-secondary btn-lg" routerLink="add">Add cloth</button>
       </li>
+      <span *ngIf="!isUserAdmin() && isUserAuthenticated" style="width: 130px;"></span>
       <li *ngIf="isUserAuthenticated" class="nav-item">
         <span class="nav-cart"><button type="button" class="btn btn-secondary btn-lg" routerLink="cart"><i
               class="fa fa-shopping-cart" style="font-size:30px ; margin-top: 5%;"></i></button></span>
@@ -17,10 +18,6 @@
       <li *ngIf="!isUserAuthenticated" class="nav-item">
         <span class="sign"><button type="button" class="btn btn-secondary btn-lg"
             routerLink="login">Login</button></span>
-      </li>
-      <li *ngIf="!isUserAuthenticated" class="nav-item">
-        <span class="sign"><button type="button" class="btn btn-secondary btn-lg"
-            routerLink="privacy">Privacy</button></span>
       </li>
       <li *ngIf="isUserAuthenticated" class="nav-item">
         <span class="logout"><button type="button" class="btn btn-secondary btn-lg"

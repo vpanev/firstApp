@@ -20,7 +20,6 @@ export class ClothDetailFormComponent implements OnInit {
   constructor(public service: ClothDetailService, public cartService: CartService,
     public toastr: ToastrService, private router: Router, private authService: AuthenticationService) { }
 
-  private addEdit: AddEditClothComponent;
 
   ngOnInit(): void {
     this.refreshList();
@@ -74,9 +73,12 @@ export class ClothDetailFormComponent implements OnInit {
       this.filteredClothes = this.list;
     }
   }
-
   isUserAuthenticated() {
     return this.authService.isUserAuthenticated();
   }
+  isUserAdmin() {
+    return this.authService.isUserAdmin();
+  }
+
 
 }

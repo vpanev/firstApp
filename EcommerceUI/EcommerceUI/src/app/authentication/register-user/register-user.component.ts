@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { UserForRegistrationDto } from './../../shared/_interfaces/user/userForRegistrationDto';
 import { AuthenticationService } from './../../shared/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-user',
@@ -16,7 +18,7 @@ export class RegisterUserComponent implements OnInit {
   public showError: boolean;
 
 
-  constructor(private _authService: AuthenticationService) { }
+  constructor(private _authService: AuthenticationService, private toastr: ToastrService, private _router: Router) { }
 
   validPasswords: boolean = false;
 
@@ -24,6 +26,7 @@ export class RegisterUserComponent implements OnInit {
     this.registerForm = new FormGroup({
       firstName: new FormControl(''),
       lastName: new FormControl(''),
+      username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       confirm: new FormControl('', [Validators.required]),
@@ -55,12 +58,15 @@ export class RegisterUserComponent implements OnInit {
     const user: UserForRegistrationDto = {
       firstName: formValues.firstName,
       lastName: formValues.lastName,
+      username: formValues.username,
       email: formValues.email,
       password: formValues.password,
       confirmPassword: formValues.confirm
     };
     this._authService.registerUser("api/accounts/registration", user).subscribe(res => {
-      alert("Successful registration!")
+      this.registerForm.reset();
+      this.toastr.success("Successful registration!")
+      this._router.navigate(["/login"])
     },
       error => {
         this.errorMessage = error;

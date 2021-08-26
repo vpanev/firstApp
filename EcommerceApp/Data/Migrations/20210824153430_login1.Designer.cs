@@ -4,14 +4,16 @@ using EcommerceApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceApp.Migrations
 {
     [DbContext(typeof(ClothAppDbContext))]
-    partial class ClothAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210824153430_login1")]
+    partial class login1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,9 +79,6 @@ namespace EcommerceApp.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("UserType")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -108,9 +107,6 @@ namespace EcommerceApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("ClothPicture")
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<decimal>("ClothPrice")
                         .HasColumnType("decimal(5,1)");
 
@@ -121,6 +117,9 @@ namespace EcommerceApp.Migrations
                     b.Property<string>("ClothType")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhotoFileName")
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ClothId");
 
