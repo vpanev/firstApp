@@ -23,6 +23,7 @@ import { BrandComponent } from './sorting/brand/brand.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { UsersDetailsComponent } from './users-details/users-details.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -38,7 +39,8 @@ export function tokenGetter() {
     FilterTextboxComponent,
     PriceComponent,
     BrandComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    UsersDetailsComponent
 
   ],
   imports: [

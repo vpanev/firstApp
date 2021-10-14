@@ -57,6 +57,11 @@ export class AuthenticationService {
     const role = decodedToken.Role
     return role === 'Admin';
   }
+  public getUsers() {
+
+    return this._http.get<any>(this._envUrl + '/api/accounts');
+
+  }
 
   //Get rid of this route creator later
   private createCompleteRoute = (route: string, envAddress: string) => {

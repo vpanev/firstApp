@@ -1,3 +1,4 @@
+import { UsersDetailsComponent } from './users-details/users-details.component';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: "signup", component: RegisterUserComponent },
   { path: "login", component: LoginComponent },
   { path: "cart", component: CartComponent, canActivate: [AuthGuard] },
-  { path: "forbidden", component: ForbiddenComponent }
+  { path: "forbidden", component: ForbiddenComponent },
+  { path: "users", component: UsersDetailsComponent, canActivate: [AdminGuard] },
   // { path: 'signup', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
 ];
 

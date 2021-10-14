@@ -1,0 +1,27 @@
+.card{
+   width: 48%;
+   height: 12rem;
+   background-color: transparent;
+   align-items:flex-start;
+   text-align: left;
+   margin-top: 5%;
+   margin-left: 0;
+   margin-bottom: 20px;
+   margin-right: 2%;
+   position: relative;
+}
+.card p{
+   font-size: 15px;
+   margin-left: 2%;
+}
+.card button{
+   width: 150px;
+   margin-top: 20%;
+}
+.card #delete{
+   margin-left: 65%;
+}
+.card #makeAdmin{
+   margin-top: 10%;
+   margin-left: 65%;
+}

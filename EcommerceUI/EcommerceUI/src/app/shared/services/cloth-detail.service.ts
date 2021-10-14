@@ -1,4 +1,4 @@
-import { ClothDetail } from 'src/app/shared/cloth-detail.model';
+import { ClothDetail } from './../cloth-detail.model';
 import { ClothDetailComponent } from './../../cloth-detail/cloth-detail.component';
 import { CartComponent } from './../../cloth-detail/cart/cart.component';
 import { Injectable } from '@angular/core';

@@ -32,15 +32,13 @@ export class CartService {
   }
 
   getTotalSum() {
-    var allSum = JSON.parse(localStorage.getItem("cart"))
-    let prices = []
-    for (var i = 0; i < allSum.length; i++) {
-      prices.push(allSum[i].clothPrice)
+    if (this.cart.length > 0) {
+      //Function for (getting the price for every cloth in the cart * its quantity)
+      this.totalSum = this.cart.reduce((total, item) => total + item.clothPrice * item.quantity, 0)
     }
-    for (var i = 0; i < prices.length; i++) {
-      this.totalSum += prices[i]
+    if (this.cart.length == 0) {
+      this.totalSum = 0
     }
-
     return this.totalSum
   }
 
@@ -54,8 +52,7 @@ export class CartService {
   clearCart() {
     this.cart = [];
     localStorage.setItem("cart", JSON.stringify(this.cart))
-    // this.loadCart();
-    // return this.cart;
+    this.getTotalSum()
   }
   removeItem(item: ClothDetail) {
     this.cart.forEach((element, index) => {
@@ -65,6 +62,7 @@ export class CartService {
     })
     localStorage.setItem('cart', JSON.stringify(this.cart))
     this.loadCart();
+    this.getTotalSum()
   }
 
   addQuantity(item: ClothDetail) {
@@ -74,6 +72,7 @@ export class CartService {
       }
     })
     localStorage.setItem('cart', JSON.stringify(this.cart))
+    this.getTotalSum()
   }
   removeQuantity(item: ClothDetail) {
     this.cart.forEach((element, index) => {
@@ -88,6 +87,7 @@ export class CartService {
     })
     console.log(this.cart)
     localStorage.setItem('cart', JSON.stringify(this.cart))
+    this.getTotalSum()
   }
 
 

@@ -10,10 +10,13 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using EcommerceApp.Data;
 using EcommerceApp.Data.Models;
 using EcommerceApp.Models;
 using EcommerceApp.Models.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -26,31 +29,19 @@ namespace EcommerceApp.Controllers
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
+        private readonly ClothAppDbContext _context;
 
-        public AccountsController(UserManager<User> userManager, IMapper mapper,IOptions<AppSettings> appSettings)
+        public AccountsController(UserManager<User> userManager, IMapper mapper,IOptions<AppSettings> appSettings, ClothAppDbContext context)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _context = context;
             _appSettings = appSettings.Value;
         }
 
         [HttpPost("Registration")]
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
         {
-            /*if (userForRegistration == null || !ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            var user = _mapper.Map<User>(userForRegistration);
-            var result = await _userManager.CreateAsync(user, userForRegistration.Password);
-            if (!result.Succeeded)
-            {
-                var errors = result.Errors.Select(e => e.Description);
-                return BadRequest(new RegistrationResponseDto { Errors = errors });
-            }
-
-            return StatusCode(201);*/
             var user = new User
             {
                 UserName = userForRegistration.UserName,
@@ -94,6 +85,13 @@ namespace EcommerceApp.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var encryptedToken = tokenHandler.WriteToken(token);
             return Ok(new LoginResponse {IsAuthSuccessful = true, Token = encryptedToken});
+        }
+
+        [HttpGet]
+        [Authorize(Policy = "UserPolicy")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            return await _context.Users.ToListAsync();
         }
 
 
